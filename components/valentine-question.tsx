@@ -24,6 +24,7 @@ export default function ValentineQuestion({ onYes }: ValentineQuestionProps) {
   const [yesSize, setYesSize] = useState(1)
   const [noPosition, setNoPosition] = useState({ x: 0, y: 0 })
   const [yesPosition, setYesPosition] = useState({ x: 0, y: 0 })
+  const [yesMessageIndex, setYesMessageIndex] = useState(0)
   const noButtonRef = useRef<HTMLButtonElement>(null)
   const yesButtonRef = useRef<HTMLButtonElement>(null)
 
@@ -60,6 +61,9 @@ export default function ValentineQuestion({ onYes }: ValentineQuestionProps) {
     const yesNewY = Math.sin(yesAngle) * yesDistance
 
     setYesPosition({ x: yesNewX, y: yesNewY })
+
+    // Change the Yes button message
+    setYesMessageIndex((prev) => (prev + 1) % funMessages.length)
   }
 
   return (
@@ -85,7 +89,7 @@ export default function ValentineQuestion({ onYes }: ValentineQuestionProps) {
             transform: `scale(${1 + yesSize * 0.2}) translate(${yesPosition.x}px, ${yesPosition.y}px)`,
           }}
         >
-          Yes! 💕
+          {yesMessageIndex > 0 ? funMessages[yesMessageIndex - 1] : 'Yes! 💕'}
         </Button>
 
         {noCount < 9 && (
