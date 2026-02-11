@@ -11,34 +11,24 @@ export default function PhotoboothSection() {
         </p>
       </div>
 
-      {/* Photobooth Strip Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
-        {/* Static Photobooth Strip */}
-        <div className="flex flex-col items-center justify-center space-y-4">
-          <div className="w-full aspect-auto bg-gradient-to-br from-accent/20 to-secondary/20 rounded-2xl p-8 flex items-center justify-center border-4 border-primary/20">
-            <div className="w-full h-96 bg-muted rounded-lg flex items-center justify-center">
-              <span className="text-muted-foreground text-lg">
-                📸 Photobooth Strip Image
-              </span>
-            </div>
+      {/* Photobooth Strip Container - Side by Side */}
+      <div className="flex flex-col lg:flex-row gap-0 items-center justify-center">
+        {/* Animated GIF Photobooth Strip */}
+        <div className="w-full lg:w-1/2 bg-gradient-to-br from-secondary/20 to-accent/20 rounded-l-2xl lg:rounded-l-2xl lg:rounded-r-none p-8 flex items-center justify-center border-4 border-secondary/20 border-r-0 lg:border-r-0">
+          <div className="w-full h-96 bg-muted rounded-lg flex items-center justify-center">
+            <span className="text-muted-foreground text-lg">
+              🎬 Photobooth GIF
+            </span>
           </div>
-          <p className="text-center text-sm text-foreground/60 font-medium">
-            Our special moment captured
-          </p>
         </div>
 
-        {/* Animated GIF Photobooth Strip */}
-        <div className="flex flex-col items-center justify-center space-y-4">
-          <div className="w-full aspect-auto bg-gradient-to-br from-secondary/20 to-accent/20 rounded-2xl p-8 flex items-center justify-center border-4 border-secondary/20">
-            <div className="w-full h-96 bg-muted rounded-lg flex items-center justify-center">
-              <span className="text-muted-foreground text-lg">
-                🎬 Photobooth GIF
-              </span>
-            </div>
+        {/* Static Photobooth Strip */}
+        <div className="w-full lg:w-1/2 bg-gradient-to-br from-accent/20 to-secondary/20 rounded-r-2xl lg:rounded-r-2xl lg:rounded-l-none p-8 flex items-center justify-center border-4 border-primary/20 border-l-0 lg:border-l-0">
+          <div className="w-full h-96 bg-muted rounded-lg flex items-center justify-center">
+            <span className="text-muted-foreground text-lg">
+              📸 Photobooth Strip Image
+            </span>
           </div>
-          <p className="text-center text-sm text-foreground/60 font-medium">
-            Watch it come alive
-          </p>
         </div>
       </div>
 

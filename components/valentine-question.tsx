@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import { Button } from '@/components/ui/button'
 
 const funMessages = [
@@ -22,6 +22,8 @@ interface ValentineQuestionProps {
 export default function ValentineQuestion({ onYes }: ValentineQuestionProps) {
   const [noCount, setNoCount] = useState(0)
   const [yesSize, setYesSize] = useState(1)
+  const [noPosition, setNoPosition] = useState({ x: 0, y: 0 })
+  const noButtonRef = useRef<HTMLButtonElement>(null)
 
   const handleNo = () => {
     setNoCount(noCount + 1)
@@ -30,6 +32,23 @@ export default function ValentineQuestion({ onYes }: ValentineQuestionProps) {
 
   const handleYes = () => {
     onYes()
+  }
+
+  const handleNoMouseEnter = () => {
+    if (!noButtonRef.current) return
+
+    const rect = noButtonRef.current.getBoundingClientRect()
+    const centerX = rect.left + rect.width / 2
+    const centerY = rect.top + rect.height / 2
+
+    // Generate random direction away from cursor
+    const angle = Math.random() * Math.PI * 2
+    const distance = 80 + Math.random() * 60
+
+    const newX = Math.cos(angle) * distance
+    const newY = Math.sin(angle) * distance
+
+    setNoPosition({ x: newX, y: newY })
   }
 
   return (
@@ -45,7 +64,7 @@ export default function ValentineQuestion({ onYes }: ValentineQuestionProps) {
       </div>
 
       {/* Buttons */}
-      <div className="flex gap-4 justify-center flex-wrap items-center min-h-16">
+      <div className="flex gap-4 justify-center flex-wrap items-center min-h-20 relative">
         <Button
           onClick={handleYes}
           size="lg"
@@ -59,19 +78,21 @@ export default function ValentineQuestion({ onYes }: ValentineQuestionProps) {
 
         {noCount < 9 && (
           <Button
+            ref={noButtonRef}
             onClick={handleNo}
+            onMouseEnter={handleNoMouseEnter}
             size="lg"
             variant="outline"
-            className="border-2 border-foreground/30 text-foreground hover:border-foreground/50 bg-transparent"
+            className="border-2 border-foreground/30 text-foreground hover:border-foreground/50 bg-transparent transition-transform duration-300 ease-out pointer-events-auto cursor-pointer"
             style={{
-              transform: `translate(${Math.random() * 20 - 10}px, ${Math.random() * 20 - 10}px)`,
+              transform: `translate(${noPosition.x}px, ${noPosition.y}px)`,
             }}
           >
             No
           </Button>
         )}
 
-        {noCount === 9 && (
+        {noCount >= 9 && (
           <Button
             onClick={handleYes}
             size="lg"
@@ -89,7 +110,7 @@ export default function ValentineQuestion({ onYes }: ValentineQuestionProps) {
         </p>
       )}
 
-      {noCount === 9 && (
+      {noCount >= 9 && (
         <p className="text-secondary text-xl font-bold">
           You know deep down you want to say yes! 😘
         </p>
