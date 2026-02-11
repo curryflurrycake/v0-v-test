@@ -23,7 +23,9 @@ export default function ValentineQuestion({ onYes }: ValentineQuestionProps) {
   const [noCount, setNoCount] = useState(0)
   const [yesSize, setYesSize] = useState(1)
   const [noPosition, setNoPosition] = useState({ x: 0, y: 0 })
+  const [yesPosition, setYesPosition] = useState({ x: 0, y: 0 })
   const noButtonRef = useRef<HTMLButtonElement>(null)
+  const yesButtonRef = useRef<HTMLButtonElement>(null)
 
   const handleNo = () => {
     setNoCount(noCount + 1)
@@ -41,7 +43,7 @@ export default function ValentineQuestion({ onYes }: ValentineQuestionProps) {
     const centerX = rect.left + rect.width / 2
     const centerY = rect.top + rect.height / 2
 
-    // Generate random direction away from cursor
+    // Generate random direction away from cursor for No button
     const angle = Math.random() * Math.PI * 2
     const distance = 80 + Math.random() * 60
 
@@ -49,6 +51,15 @@ export default function ValentineQuestion({ onYes }: ValentineQuestionProps) {
     const newY = Math.sin(angle) * distance
 
     setNoPosition({ x: newX, y: newY })
+
+    // Also move the Yes button to a random position
+    const yesAngle = Math.random() * Math.PI * 2
+    const yesDistance = 40 + Math.random() * 40
+
+    const yesNewX = Math.cos(yesAngle) * yesDistance
+    const yesNewY = Math.sin(yesAngle) * yesDistance
+
+    setYesPosition({ x: yesNewX, y: yesNewY })
   }
 
   return (
@@ -66,11 +77,12 @@ export default function ValentineQuestion({ onYes }: ValentineQuestionProps) {
       {/* Buttons */}
       <div className="flex gap-4 justify-center flex-wrap items-center min-h-20 relative">
         <Button
+          ref={yesButtonRef}
           onClick={handleYes}
           size="lg"
-          className="bg-primary hover:bg-primary/90 text-white transition-all duration-200"
+          className="bg-primary hover:bg-primary/90 text-white transition-all duration-300 ease-out"
           style={{
-            transform: `scale(${1 + yesSize * 0.2})`,
+            transform: `scale(${1 + yesSize * 0.2}) translate(${yesPosition.x}px, ${yesPosition.y}px)`,
           }}
         >
           Yes! 💕

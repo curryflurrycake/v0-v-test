@@ -1,13 +1,19 @@
 'use client'
 
 import { useState } from 'react'
+import Login from '@/components/login'
 import ValentineQuestion from '@/components/valentine-question'
 import PhotoboothSection from '@/components/photobooth-section'
 import GallerySection from '@/components/gallery-section'
 import SpecialMessage from '@/components/special-message'
 
 export default function Home() {
+  const [isLoggedIn, setIsLoggedIn] = useState(false)
   const [showGallery, setShowGallery] = useState(false)
+
+  if (!isLoggedIn) {
+    return <Login onLoginSuccess={() => setIsLoggedIn(true)} />
+  }
 
   return (
     <main className="min-h-screen bg-gradient-to-b from-background via-background to-accent/10">
