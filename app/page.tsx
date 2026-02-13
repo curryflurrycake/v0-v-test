@@ -18,11 +18,13 @@ export default function Home() {
   return (
     <main className="min-h-screen bg-gradient-to-b from-background via-background to-accent/10">
       {/* Hero Section with Valentine Question */}
-      <section className="w-full px-4 py-12 md:py-20">
-        <div className="max-w-3xl mx-auto">
-          <ValentineQuestion onYes={() => setShowGallery(true)} />
-        </div>
-      </section>
+      {!showGallery && (
+        <section className="w-full px-4 py-12 md:py-20">
+          <div className="max-w-3xl mx-auto">
+            <ValentineQuestion onYes={() => setShowGallery(true)} />
+          </div>
+        </section>
+      )}
 
       {/* Photobooth Strip Section */}
       {showGallery && (
