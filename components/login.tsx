@@ -17,10 +17,6 @@ export default function Login({ onLoginSuccess }: LoginProps) {
   const [error, setError] = useState('')
   const [isLoading, setIsLoading] = useState(false)
 
-  // Hardcoded credentials
-  const VALID_USERNAME = 'pb'
-  const VALID_PASSWORD = 'co'
-
 const handleLogin = async (e: React.FormEvent) => {
   e.preventDefault()
   setError('')
@@ -41,6 +37,7 @@ const handleLogin = async (e: React.FormEvent) => {
 
   setIsLoading(false)
 }
+
 
   const handleKeyPress = (e: React.KeyboardEvent) => {
     if (e.key === 'Enter') {
