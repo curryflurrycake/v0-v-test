@@ -17,7 +17,7 @@ export default function PhotoboothSection() {
         <div className="w-full lg:w-1/2 bg-gradient-to-br from-secondary/20 to-accent/20 rounded-l-2xl lg:rounded-l-2xl lg:rounded-r-none p-8 flex items-center justify-center border-4 border-secondary/20 border-r-0 lg:border-r-4">
           <div className="w-auto h-auto bg-muted rounded-lg flex items-center justify-center overflow-hidden">
             <video
-              src="/images/photobooth.mp4" // replace with your video path path
+              src="/images/photobooth.MP4" // replace with your video path path
               autoPlay
               loop
               muted

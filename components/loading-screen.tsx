@@ -20,7 +20,7 @@ export default function LoadingScreen() {
         {/* Loading text */}
         <div className="space-y-2">
           <p className="text-xl font-semibold text-primary">
-            Loading...
+            Loading...!!!
           </p>
           <div className="flex justify-center gap-1">
             <div className="w-2 h-2 bg-primary rounded-full animate-pulse"></div>
