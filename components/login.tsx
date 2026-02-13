@@ -4,6 +4,7 @@ import React from "react"
 
 import { useState } from 'react'
 import { Button } from '@/components/ui/button'
+import LoadingScreen from '@/components/loading-screen'
 
 interface LoginProps {
   onLoginSuccess: () => void
@@ -43,7 +44,9 @@ export default function Login({ onLoginSuccess }: LoginProps) {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-background via-background to-accent/10 flex items-center justify-center px-4">
+    <>
+      {isLoading && <LoadingScreen />}
+      <div className="min-h-screen bg-gradient-to-b from-background via-background to-accent/10 flex items-center justify-center px-4">
       <div className="w-full max-w-md">
         <div className="bg-white/80 backdrop-blur rounded-3xl p-8 md:p-10 shadow-lg border border-primary/10 space-y-8">
           {/* Header */}
@@ -118,5 +121,6 @@ export default function Login({ onLoginSuccess }: LoginProps) {
         </div>
       </div>
     </div>
+      </>
   )
 }

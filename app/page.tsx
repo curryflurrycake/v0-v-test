@@ -6,6 +6,7 @@ import ValentineQuestion from '@/components/valentine-question'
 import PhotoboothSection from '@/components/photobooth-section'
 import GallerySection from '@/components/gallery-section'
 import SpecialMessage from '@/components/special-message'
+import AnimatedBackground from '@/components/animated-background'
 
 export default function Home() {
   const [isLoggedIn, setIsLoggedIn] = useState(false)
@@ -16,18 +17,20 @@ export default function Home() {
   }
 
   return (
-    <main className="min-h-screen bg-gradient-to-b from-background via-background to-accent/10">
-      {/* Hero Section with Valentine Question */}
-      {!showGallery && (
-        <section className="w-full px-4 py-12 md:py-20">
-          <div className="max-w-3xl mx-auto">
-            <ValentineQuestion onYes={() => setShowGallery(true)} />
-          </div>
-        </section>
-      )}
+    <>
+      {showGallery && <AnimatedBackground />}
+      <main className="min-h-screen bg-gradient-to-b from-background via-background to-accent/10 relative z-10">
+        {/* Hero Section with Valentine Question */}
+        {!showGallery && (
+          <section className="w-full px-4 py-12 md:py-20">
+            <div className="max-w-3xl mx-auto">
+              <ValentineQuestion onYes={() => setShowGallery(true)} />
+            </div>
+          </section>
+        )}
 
-      {/* Photobooth Strip Section */}
-      {showGallery && (
+        {/* Photobooth Strip Section */}
+        {showGallery && (
         <>
           <section className="w-full px-4 py-12 md:py-20 bg-white/50">
             <div className="max-w-4xl mx-auto">
@@ -50,6 +53,7 @@ export default function Home() {
           </section>
         </>
       )}
-    </main>
+      </main>
+    </>
   )
 }
