@@ -30,7 +30,7 @@ export default function PhotoboothSection() {
         <div className="w-full lg:w-1/2 bg-gradient-to-br from-accent/20 to-secondary/20 rounded-r-2xl lg:rounded-r-2xl lg:rounded-l-none p-8 flex items-center justify-center border-4 border-primary/20 border-l-0 lg:border-l-4">
           <div className="w-auto h-auto bg-muted rounded-lg flex items-center justify-center">
             <img
-              src="/images/photobooth.jpg"
+              src="/images/photobooth.JPG"
               alt="Photobooth Strip"
               className="w-full h-full object-cover rounded-lg"
             />
