@@ -19,7 +19,7 @@ export default function Home() {
   return (
     <>
       {showGallery && <AnimatedBackground />}
-      <main className="min-h-screen bg-gradient-to-b from-background via-background to-accent/10 relative z-10">
+      <main className="min-h-screen bg-gradient-to-b from-red-100 via-red-200 to-red-400 relative z-10">
         {/* Hero Section with Valentine Question */}
         {!showGallery && (
           <section className="w-full px-4 py-12 md:py-20">

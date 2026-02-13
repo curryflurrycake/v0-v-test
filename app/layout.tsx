@@ -8,9 +8,9 @@ const _geist = Geist({ subsets: ['latin'] })
 const _geistMono = Geist_Mono({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'Be My Valentine',
-  description: 'A special Valentine\'s Day moment for us',
-  generator: 'v0.app',
+  title: 'Hi',
+  description: 'vtest',
+  generator: 'v0.app', //thank you v0 :)
 }
 
 export default function RootLayout({
